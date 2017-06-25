@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "HomePy", "HomePy.pyproj", "{EBDBA95B-764A-46BB-886F-A97EBE0C380C}"
-EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HomeFS", "HomeFS.fsproj", "{1B5CA5B7-6F08-45CD-9281-B206B8490581}"
 EndProject
 Global
@@ -13,8 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EBDBA95B-764A-46BB-886F-A97EBE0C380C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBDBA95B-764A-46BB-886F-A97EBE0C380C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B5CA5B7-6F08-45CD-9281-B206B8490581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B5CA5B7-6F08-45CD-9281-B206B8490581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B5CA5B7-6F08-45CD-9281-B206B8490581}.Release|Any CPU.ActiveCfg = Release|Any CPU

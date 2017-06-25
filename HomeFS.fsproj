@@ -54,7 +54,7 @@
     <Content Include="packages.config" />
     <None Include="Dust\RetrieveDustData.fsx" />
     <None Include="Dust\AnalyzeDustData.fsx" />
-    <Content Include="Google.DataTable.Net.Wrapper.XML" />
+    <None Include="Meteo\AnalyzeMeteoData.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">

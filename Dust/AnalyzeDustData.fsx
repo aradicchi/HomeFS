@@ -116,7 +116,7 @@ Chart.Rows
     ]
 
 let daysOfYear (year : int) =
-    let span = (new DateTime(year,12,31))-(new DateTime(year,1,1))
+    let span = (DateTime(year,12,31))-(DateTime(year,1,1))
     span.Days
 
 let byyday = 
