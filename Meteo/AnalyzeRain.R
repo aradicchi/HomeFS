@@ -1,5 +1,6 @@
 library(ggplot2)
 library(dplyr)
+library(zoo)
 
 setwd("C:/Users/Rada/Codes/Net/HomeFS/Meteo/")
 
@@ -24,3 +25,20 @@ p <- ggplot(data=filter(sumrain,Year!='2017'),aes(reorder(MonthId,-Month),RainSu
   #scale_colour_gradientn(colours=terrain.colors(3)) +
   theme(legend.position="none",plot.title = element_text(face="bold",size=12))
 p
+
+series <- zoo(fullrain$Rain,fullrain$RefDate)
+sumseries <- rollsum(series,6*30,align='right')
+dfsum <- fortify(sumseries)
+dfsum$Month <- as.integer(format(dfsum$Index,"%m"))
+dfsum$MonthId <- as.factor(dfsum$Month)
+dfsum$Year <- as.factor(format(dfsum$Index,"%Y"))
+
+p1 <- ggplot(data=filter(dfsum,Year!='2017'),aes(reorder(MonthId,-Month),sumseries,col=Year)) + 
+  geom_jitter(width=0.1,alpha=0.5,shape=0) +
+  geom_jitter(width=0.1,shape=16,data=filter(dfsum,Year=='2017'),aes(MonthId,sumseries,col=Year),colour="orange") +
+  coord_flip() +
+  scale_y_continuous(name="Rain (kg/mq)") +
+  scale_x_discrete(name="Month") +  
+  #scale_colour_gradientn(colours=terrain.colors(3)) +
+  theme(legend.position="none",plot.title = element_text(face="bold",size=12))
+p1
