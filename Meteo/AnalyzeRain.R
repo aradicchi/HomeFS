@@ -42,3 +42,30 @@ p1 <- ggplot(data=filter(dfsum,Year!='2017'),aes(reorder(MonthId,-Month),sumseri
   #scale_colour_gradientn(colours=terrain.colors(3)) +
   theme(legend.position="none",plot.title = element_text(face="bold",size=12))
 p1
+
+p1_2 <- ggplot(data=filter(dfsum,Year!='2017'),aes(reorder(MonthId,-Month),sumseries)) + 
+  geom_boxplot(outlier.color = "red") +
+  geom_jitter(width=0.1,shape=16,data=filter(dfsum,Year=='2017'),aes(MonthId,sumseries,col=Year),colour="orange") +
+  coord_flip() +
+  scale_y_continuous(name="Rain (kg/mq)") +
+  scale_x_discrete(name="Month") +  
+  #scale_colour_gradientn(colours=terrain.colors(3)) +
+  ggtitle("Rolling 6M cumulated rain in Parma:\n1961-2016 (box) vs 2017 (orange jitter)") +
+  theme(legend.position="none",plot.title = element_text(face="bold",size=12))
+p1_2
+
+p2 <- ggplot(data=dfsum,aes(Index,sumseries)) + 
+  geom_point() +
+  geom_smooth()
+p2
+
+avgseries <- rollmean(series,6*30,align="right")
+dfavg <- fortify(avgseries)
+dfavg$Month <- as.integer(format(dfavg$Index,"%m"))
+dfavg$MonthId <- as.factor(dfavg$Month)
+dfavg$Year <- as.factor(format(dfavg$Index,"%Y"))
+
+p3 <- ggplot(data=dfavg,aes(Index,avgseries)) + 
+  geom_point() +
+  geom_smooth()
+p3
