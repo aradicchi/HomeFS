@@ -27,7 +27,7 @@ p <- ggplot(data=filter(sumrain,Year!='2017'),aes(reorder(MonthId,-Month),RainSu
 p
 
 series <- zoo(fullrain$Rain,fullrain$RefDate)
-sumseries <- rollsum(series,6*30,align='right')
+sumseries <- rollsum(series,12*30,align='right')
 dfsum <- fortify(sumseries)
 dfsum$Month <- as.integer(format(dfsum$Index,"%m"))
 dfsum$MonthId <- as.factor(dfsum$Month)
