@@ -69,3 +69,8 @@ p3 <- ggplot(data=dfavg,aes(Index,avgseries)) +
   geom_point() +
   geom_smooth()
 p3
+
+means <- rollmean(series,365*5,align="right")
+longavgrain <- fortify(means)
+p4 <- ggplot(data=longavgrain,aes(Index,means)) + geom_line()
+p4
