@@ -31,6 +31,7 @@ sensor = Adafruit_DHT.DHT11
 # Example using a Beaglebone Black with DHT sensor
 # connected to pin P8_11.
 pin = 'P8_11'
+sleep_seconds = 60*5
 
 # Example using a Raspberry Pi with DHT sensor
 # connected to GPIO23.
@@ -46,4 +47,4 @@ with open("data.csv","w") as ofile:
             ofile.flush()
         else:
             print('Failed to get reading. Try again!')
-        time.sleep(60)
+        time.sleep(sleep_seconds)
